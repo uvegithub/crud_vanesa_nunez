@@ -14,10 +14,13 @@
         android:theme="@style/Theme.Firebase"
         tools:targetApi="31">
         <activity
-            android:name=".CrearCasa"
+            android:name="com.example.firebase.VerCasas"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name="com.example.firebase.CrearCasa"
+            android:exported="false" />
+        <activity
+            android:name="com.example.firebase.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

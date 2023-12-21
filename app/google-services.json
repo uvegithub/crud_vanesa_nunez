@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "563254507969",
+    "firebase_url": "https://crud-vanesa-default-rtdb.europe-west1.firebasedatabase.app",
     "project_id": "crud-vanesa",
     "storage_bucket": "crud-vanesa.appspot.com"
   },
@@ -10,6 +11,25 @@
         "mobilesdk_app_id": "1:563254507969:android:c37333a432ba23bf76d740",
         "android_client_info": {
           "package_name": "com.example.a2tdam_ad_vanesa_nunez_sierra_crud_firebase"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBtelMGnDcSIlPGtKNnGL7_co7mxq_Pw00"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:563254507969:android:88e613cef4c7f00276d740",
+        "android_client_info": {
+          "package_name": "com.example.firebase"
         }
       },
       "oauth_client": [],
