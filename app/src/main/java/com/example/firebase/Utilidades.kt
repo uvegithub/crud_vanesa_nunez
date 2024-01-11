@@ -43,14 +43,15 @@ class Utilidades {
             return lista
         }
 
-        fun escribirClub(db_ref: DatabaseReference, id: String, nombre:String, fundador:String, anio_fundacion:Int, fecha:String, url_firebase:String)=
+        fun escribirClub(db_ref: DatabaseReference, id: String, nombre:String, fundador:String, anio_fundacion:Int, fecha:String, url_firebase:String, puntos:Int)=
             db_ref.child("howarts").child("casas").child(id).setValue(Pojo_casa(
                 id,
                 nombre,
                 fundador,
                 anio_fundacion,
                 fecha,
-                url_firebase
+                url_firebase,
+                puntos
             ))
 
         suspend fun guardarEscudo(sto_ref: StorageReference, id:String, imagen: Uri):String{
