@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Howarts</string>
+    <array name="spinner_items">
+        <item>Por nombre</item>
+        <item>Por puntuacion</item>
+    </array>
 </resources>
