@@ -23,6 +23,8 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 import kotlin.coroutines.CoroutineContext
 
 class EditarCasa : AppCompatActivity(),CoroutineScope {
@@ -42,7 +44,7 @@ class EditarCasa : AppCompatActivity(),CoroutineScope {
     private  lateinit var  pojo_casa:Pojo_casa
     private lateinit var lista_casas: MutableList<Pojo_casa>
 
-    private lateinit var fecha_creacion: EditText
+//    private lateinit var fecha_creacion: EditText
 
     private lateinit var puntuacion: RatingBar
 
@@ -74,19 +76,19 @@ class EditarCasa : AppCompatActivity(),CoroutineScope {
         anio_fundacion.setText(pojo_casa.anio_fundacion.toString())
 
 
-        fecha_creacion = findViewById(R.id.fecha)
+//        fecha_creacion = findViewById(R.id.fecha)
 
         puntuacion = findViewById(R.id.ratingBar)
 
-        val materialDatePicker =
-            MaterialDatePicker.Builder.datePicker().setTitleText("Seleccionar fecha").build()
-
-        materialDatePicker.addOnPositiveButtonClickListener {
-            fecha_creacion.setText(materialDatePicker.headerText)
-        }
-        fecha_creacion.setOnClickListener {
-            materialDatePicker.show(supportFragmentManager, materialDatePicker.toString())
-        }
+//        val materialDatePicker =
+//            MaterialDatePicker.Builder.datePicker().setTitleText("Seleccionar fecha").build()
+//
+//        materialDatePicker.addOnPositiveButtonClickListener {
+//            fecha_creacion.setText(materialDatePicker.headerText)
+//        }
+//        fecha_creacion.setOnClickListener {
+//            materialDatePicker.show(supportFragmentManager, materialDatePicker.toString())
+//        }
 
         var getRatingValue = 0.0f
 
@@ -115,6 +117,9 @@ class EditarCasa : AppCompatActivity(),CoroutineScope {
 
         bmodificar.setOnClickListener {
 
+            val dateTime = LocalDateTime.now()
+                .format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
+
             if (nombre.text.toString().trim().isEmpty() ||
                 fundador.text.toString().trim().isEmpty() ||
                 anio_fundacion.text.toString().trim().isEmpty()
@@ -124,7 +129,7 @@ class EditarCasa : AppCompatActivity(),CoroutineScope {
                             "formulario", Toast.LENGTH_SHORT
                 ).show()
 
-            } else if (Utilidades.existeCasa(lista_casas, nombre.text.toString().trim())) {
+            } else if ( !nombre.text.toString().trim().equals(pojo_casa.nombre) && Utilidades.existeCasa(lista_casas, nombre.text.toString().trim())) {
                 Toast.makeText(applicationContext, "Esa casa ya existe", Toast.LENGTH_SHORT)
                     .show()
             } else {
@@ -140,12 +145,12 @@ class EditarCasa : AppCompatActivity(),CoroutineScope {
                     }
 
 
-                    Utilidades.escribirClub(
+                    Utilidades.escribirCasa(
                         db_ref, pojo_casa.id!!,
                         nombre.text.toString().trim(),
                         fundador.text.toString().trim(),
                         anio_fundacion.text.toString().trim().toInt(),
-                        fecha_creacion.toString().trim(),
+                        dateTime,
                         url_escudo_firebase,
                         getRatingValue.toInt()
                     )

@@ -45,7 +45,7 @@ class CrearCasa : AppCompatActivity(), CoroutineScope {
 
     private lateinit var job: Job
 
-    private lateinit var fecha_creacion: EditText
+//    private lateinit var fecha_creacion: EditText
 
     private lateinit var puntuacion: RatingBar
 
@@ -71,19 +71,19 @@ class CrearCasa : AppCompatActivity(), CoroutineScope {
         storage_ref = FirebaseStorage.getInstance().getReference()
         lista_casas = Utilidades.obtenerListaCasas(database_ref)
 
-        fecha_creacion = findViewById(R.id.fecha)
+//        fecha_creacion = findViewById(R.id.fecha)
 
         puntuacion = findViewById(R.id.ratingBar)
 
-        val materialDatePicker =
-            MaterialDatePicker.Builder.datePicker().setTitleText("Seleccionar fecha").build()
-
-        materialDatePicker.addOnPositiveButtonClickListener {
-            fecha_creacion.setText(materialDatePicker.headerText)
-        }
-        fecha_creacion.setOnClickListener {
-            materialDatePicker.show(supportFragmentManager, materialDatePicker.toString())
-        }
+//        val materialDatePicker =
+//            MaterialDatePicker.Builder.datePicker().setTitleText("Seleccionar fecha").build()
+//
+//        materialDatePicker.addOnPositiveButtonClickListener {
+//            fecha_creacion.setText(materialDatePicker.headerText)
+//        }
+//        fecha_creacion.setOnClickListener {
+//            materialDatePicker.show(supportFragmentManager, materialDatePicker.toString())
+//        }
 
 //        var anio = fecha_creacion.text.toString()
 //            .slice(fecha_creacion.text.toString().length - 4..fecha_creacion.text.toString().length - 1)
@@ -165,7 +165,7 @@ class CrearCasa : AppCompatActivity(), CoroutineScope {
                     val url_escudo_firebase =
                         Utilidades.guardarEscudo(storage_ref, id_generado!!, url_escudo!!)
 
-                    Utilidades.escribirClub(
+                    Utilidades.escribirCasa(
                         database_ref, id_generado!!,
                         nombre.text.toString().trim(),
                         fundador.text.toString().trim(),

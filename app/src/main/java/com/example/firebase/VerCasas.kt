@@ -103,9 +103,9 @@ class VerCasas : AppCompatActivity() {
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, posicion: Int, id: Long) {
                 val item_seleccionado = items[posicion]
                 if(item_seleccionado == "Por nombre"){
-
+                    lista.sortBy{ it.nombre }
                 }else if(item_seleccionado == "Por puntuacion"){
-                    lista.sortBy{ it.puntuacion }
+                    lista.sortByDescending{ it.puntuacion }
                 }
 
                 recycler.adapter?.notifyDataSetChanged()
