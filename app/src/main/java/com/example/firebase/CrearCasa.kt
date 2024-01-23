@@ -6,6 +6,7 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.preference.PreferenceManager
+import android.provider.Settings
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
@@ -165,6 +166,9 @@ class CrearCasa : AppCompatActivity(), CoroutineScope {
                     val url_escudo_firebase =
                         Utilidades.guardarEscudo(storage_ref, id_generado!!, url_escudo!!)
 
+                    val androidId =
+                        Settings.Secure.getString(contentResolver, Settings.Secure.ANDROID_ID)
+
                     Utilidades.escribirCasa(
                         database_ref, id_generado!!,
                         nombre.text.toString().trim(),
@@ -172,7 +176,9 @@ class CrearCasa : AppCompatActivity(), CoroutineScope {
                         anio_fundacion.text.toString().trim().toInt(),
                         dateTime,
                         url_escudo_firebase,
-                        getRatingValue.toInt())
+                        getRatingValue.toInt(),
+                        Estado.CREADO,
+                        androidId)
 
                     Utilidades.tostadaCorrutina(
                         this_activity,

@@ -2,6 +2,7 @@ package com.example.firebase
 
 import android.content.Context
 import android.content.Intent
+import android.provider.Settings
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -61,6 +62,10 @@ class CasaAdaptador(private val lista_casas: MutableList<Pojo_casa>):
         holder.eliminar.setOnClickListener {
             val  db_ref = FirebaseDatabase.getInstance().getReference()
             val sto_ref = FirebaseStorage.getInstance().getReference()
+
+            val androidId =
+                Settings.Secure.getString(contexto.contentResolver, Settings.Secure.ANDROID_ID)
+
             lista_filtrada.remove(item_actual)
             sto_ref.child("howarts").child("casas")
                 .child(item_actual.id!!).delete()

@@ -43,7 +43,7 @@ class Utilidades {
             return lista
         }
 
-        fun escribirCasa(db_ref: DatabaseReference, id: String, nombre:String, fundador:String, anio_fundacion:Int, fecha:String, url_firebase:String, puntos:Int)=
+        fun escribirCasa(db_ref: DatabaseReference, id: String, nombre:String, fundador:String, anio_fundacion:Int, fecha:String, url_firebase:String, puntos:Int, estado_notificacion: Int, user_notificacion: String)=
             db_ref.child("howarts").child("casas").child(id).setValue(Pojo_casa(
                 id,
                 nombre,
@@ -51,7 +51,9 @@ class Utilidades {
                 anio_fundacion,
                 fecha,
                 url_firebase,
-                puntos
+                puntos,
+                estado_notificacion,
+                user_notificacion
             ))
 
         suspend fun guardarEscudo(sto_ref: StorageReference, id:String, imagen: Uri):String{
