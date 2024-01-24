@@ -6,6 +6,7 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.preference.PreferenceManager
+import android.provider.Settings
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
@@ -144,6 +145,8 @@ class EditarCasa : AppCompatActivity(),CoroutineScope {
                             Utilidades.guardarEscudo(st_ref, pojo_casa.id!!, url_escudo!!)
                     }
 
+                    val androidId =
+                        Settings.Secure.getString(contentResolver, Settings.Secure.ANDROID_ID)
 
                     Utilidades.escribirCasa(
                         db_ref, pojo_casa.id!!,
@@ -152,12 +155,14 @@ class EditarCasa : AppCompatActivity(),CoroutineScope {
                         anio_fundacion.text.toString().trim().toInt(),
                         dateTime,
                         url_escudo_firebase,
-                        getRatingValue.toInt()
+                        getRatingValue.toInt(),
+                        Estado.MODIFICADO,
+                        androidId
                     )
                     Utilidades.tostadaCorrutina(
                         this_activity,
                         applicationContext,
-                        "Club modificado con exito"
+                        "Casa modificada con exito"
                     )
                     val activity = Intent(applicationContext, MainActivity::class.java)
                     startActivity(activity)
